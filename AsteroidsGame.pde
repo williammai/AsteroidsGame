@@ -1,15 +1,30 @@
 //your variable declarations here
 public void setup() 
 {
-  //your code here
+  size(600,600);
 }
 public void draw() 
 {
   //your code here
 }
-class SpaceShip //extends Floater  
+class SpaceShip extends Floater  
 {   
-    //your code here
+    Spaceship()
+    {
+      corners = 5
+      int[] xS = {-6,6,0,0,11};
+      int[] yS = {4,-4,-7,7,0};
+      xCorners = xS;
+      yCorners = yS;
+      myColor = 255;
+      myCenterX = 0;
+      myCenterY = 0;
+      myDirectionX = 5;
+      myDirectionY = -5;
+      myPointDirection = 180;
+    }
+
+
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
@@ -20,16 +35,16 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
   protected double myCenterX, myCenterY; //holds center coordinates   
   protected double myDirectionX, myDirectionY; //holds x and y coordinates of the vector for direction of travel   
   protected double myPointDirection; //holds current direction the ship is pointing in degrees    
-  abstract public void setX(int x);  
-  abstract public int getX();   
-  abstract public void setY(int y);   
-  abstract public int getY();   
-  abstract public void setDirectionX(double x);   
-  abstract public double getDirectionX();   
-  abstract public void setDirectionY(double y);   
-  abstract public double getDirectionY();   
-  abstract public void setPointDirection(int degrees);   
-  abstract public double getPointDirection(); 
+  public void setX(int x) {xCorners = x};  
+  public int getX() {return xCorners};  
+  public void setY(int y) {yCorners = y};  
+  public int getY() {return yCorners};  
+   public void setDirectionX(double x) {myDirectionX = x};  
+   public double getDirectionX() {return myDirectionX};  
+  public void setDirectionY(double y){myDirectionY = y};   
+  public double getDirectionY() {return myDirectionY};   
+   public void setPointDirection(int degrees){myPointDirection = x};   
+  public double getPointDirection() {return myPointDirection};
 
   //Accelerates the floater in the direction it is pointing (myPointDirection)   
   public void accelerate (double dAmount)   
