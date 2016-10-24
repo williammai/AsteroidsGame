@@ -10,19 +10,26 @@ public void draw()
   background(255);
   boob.move();
   boob.show();
- 
- if (keyCode == LEFT && keyPressed == true)
+}
+public void keyPressed(){
+ if (keyCode == LEFT)
  {
-  boob.rotate(-5);
+  boob.rotate(-15);
  }
- if(keyCode == RIGHT && keyPressed == true)
+ if(keyCode == RIGHT)
  {
-  boob.rotate(5);
+  boob.rotate(15);
  }
- if(keyCode == UP && keyPressed == true)
+ if(keyCode == UP)
  {
-  boob.accelerate(0.1);
+  boob.accelerate(0.2);
  }
+ if(keyCode == 'H')
+ {
+  boob.setX((int)(Math.random()*600));
+  boob.setY((int)(Math.random()*600));
+  boob.accelerate(0);
+}
 }
 class SpaceShip extends Floater  
 {   
