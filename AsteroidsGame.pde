@@ -1,15 +1,32 @@
 SpaceShip boob = new SpaceShip();
+Star[] tiger = new Star[200];
+int r;
+int g;
+int b;
+int o;
 public void setup() 
+
 {
   size(600,600);
   boob.setX(300);
   boob.setY(300);
+   for(int i = 0; i<tiger.length;i++){
+    tiger[i] = new Star((int)(Math.random()*700),(int)(Math.random()*700));
+   }
 }
 public void draw() 
 {
-  background(255);
+  background(0);
   boob.move();
   boob.show();
+  for (int i = 0; i<tiger.length;i++){
+    tiger[i].show1();
+  }
+  r = r+1;
+  g = g+1;
+  b = b+1;
+  o = o+1;
+
 }
 public void keyPressed(){
  if (keyCode == LEFT)
@@ -28,7 +45,8 @@ public void keyPressed(){
  {
   boob.setX((int)(Math.random()*600));
   boob.setY((int)(Math.random()*600));
-  boob.accelerate(0);
+  boob.setDirectionX(0);
+  boob.setDirectionY(0);
 }
 }
 class SpaceShip extends Floater  
@@ -39,6 +57,7 @@ class SpaceShip extends Floater
       int[] yS = {-5,0,5,0,-5};
       xCorners = xS;
       yCorners = yS;
+      myColor = 255;
 
 
     }  
@@ -54,6 +73,21 @@ class SpaceShip extends Floater
       public double getPointDirection() {return myPointDirection;}
 
    
+}
+
+class Star
+{
+ private int myX;
+ private int myY;
+ 
+ public Star(int x, int y){
+  myX = x;
+  myY = y;
+ } 
+ public void show1(){
+  fill(r,g,b,o);
+  ellipse(myX,myY,5,5);
+ } 
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
