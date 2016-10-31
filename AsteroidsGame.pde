@@ -4,6 +4,7 @@ int r;
 int g;
 int b;
 int o;
+Asteroid[] huge = new Asteroid[18];
 public void setup() 
 
 {
@@ -13,6 +14,9 @@ public void setup()
    for(int i = 0; i<tiger.length;i++){
     tiger[i] = new Star((int)(Math.random()*700),(int)(Math.random()*700));
    }
+   for(int i = 0; i<huge.length; i++){
+    huge[i] = new Asteroid((int)(Math.random()*700),(int)(Math.random()*700));
+   }
 }
 public void draw() 
 {
@@ -21,6 +25,11 @@ public void draw()
   boob.show();
   for (int i = 0; i<tiger.length;i++){
     tiger[i].show1();
+  }
+  for (int i = 0; i<huge.length;i++){
+    
+    huge[i].show();
+    huge[i].move();
   }
   r = r+1;
   g = g+1;
@@ -52,12 +61,12 @@ public void keyPressed(){
 class SpaceShip extends Floater  
 {   
     public SpaceShip(){
-      corners = 4;
-      int[] xS = {-5,3,-5,-2,-5};
-      int[] yS = {-5,0,5,0,-5};
-      xCorners = xS;
-      yCorners = yS;
-      myColor = 255;
+    corners = 4;
+    int[] xS = {-5,3,-5,-2,-5};
+    int[] yS = {-5,0,5,0,-5};
+    xCorners = xS;
+    yCorners = yS;
+    myColor = 255;
 
 
     }  
@@ -88,6 +97,19 @@ class Star
   fill(r,g,b,o);
   ellipse(myX,myY,5,5);
  } 
+}
+
+class Asteroid extends Floater 
+{
+  public Asteroid(int x, int y){
+  corners = 5;
+     int[] xS = {-4,0,6,4,-2};
+     int[] yS = {0,4,0,-2,-4};
+     xCorners = xS;
+     yCorners = yS;
+      myColor(160,80,45);
+    }
+  
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
