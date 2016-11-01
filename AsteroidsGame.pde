@@ -15,7 +15,11 @@ public void setup()
     tiger[i] = new Star((int)(Math.random()*700),(int)(Math.random()*700));
    }
    for(int i = 0; i<huge.length; i++){
-    huge[i] = new Asteroid((int)(Math.random()*700),(int)(Math.random()*700));
+    huge[i] = new Asteroid();
+    huge[i].setX((int)(Math.random()*800));
+    huge[i].setY((int)(Math.random()*800));
+    huge[i].setDirectionX((Math.random()*360)-180);
+    huge[i].setDirectionY((Math.random()*360)-180);
    }
 }
 public void draw() 
@@ -27,9 +31,9 @@ public void draw()
     tiger[i].show1();
   }
   for (int i = 0; i<huge.length;i++){
-    
-    huge[i].show();
+
     huge[i].move();
+    huge[i].show();
   }
   r = r+1;
   g = g+1;
@@ -101,14 +105,32 @@ class Star
 
 class Asteroid extends Floater 
 {
-  public Asteroid(int x, int y){
+  private int rotSpeed;
+  public Asteroid(){
   corners = 5;
      int[] xS = {-4,0,6,4,-2};
      int[] yS = {0,4,0,-2,-4};
      xCorners = xS;
      yCorners = yS;
-      myColor(160,80,45);
+      myColor = color(160,82,45);
     }
+
+
+    public void setX(int x) {myCenterX = x;}
+      public int getX() {return (int)(myCenterX);}
+      public void setY(int y) {myCenterY = y;}
+      public int getY() {return (int)(myCenterY);}
+      public void setDirectionX(double x) {myDirectionX = x;}
+      public double getDirectionX() {return myDirectionX;}
+      public void setDirectionY(double y) {myDirectionY = y;}
+      public double getDirectionY() {return myDirectionY;}
+      public void setPointDirection(int degrees) {myPointDirection = degrees;}
+      public double getPointDirection() {return myPointDirection;}
+
+  public void move()
+  {
+
+  }
   
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
