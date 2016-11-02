@@ -18,8 +18,9 @@ public void setup()
     huge[i] = new Asteroid();
     huge[i].setX((int)(Math.random()*800));
     huge[i].setY((int)(Math.random()*800));
-    huge[i].setDirectionX((Math.random()*360)-180);
-    huge[i].setDirectionY((Math.random()*360)-180);
+    huge[i].setDirectionX((Math.random()*8)-4);
+    huge[i].setDirectionY((Math.random()*8)-4);
+
    }
 }
 public void draw() 
@@ -34,6 +35,7 @@ public void draw()
 
     huge[i].move();
     huge[i].show();
+    huge[i].rotate(1);
   }
   r = r+1;
   g = g+1;
@@ -108,8 +110,8 @@ class Asteroid extends Floater
   private int rotSpeed;
   public Asteroid(){
   corners = 5;
-     int[] xS = {-4,0,6,4,-2};
-     int[] yS = {0,4,0,-2,-4};
+     int[] xS = {-16,0,24,24,-8};
+     int[] yS = {0,16,0,-8,-16};
      xCorners = xS;
      yCorners = yS;
       myColor = color(160,82,45);
@@ -126,11 +128,6 @@ class Asteroid extends Floater
       public double getDirectionY() {return myDirectionY;}
       public void setPointDirection(int degrees) {myPointDirection = degrees;}
       public double getPointDirection() {return myPointDirection;}
-
-  public void move()
-  {
-
-  }
   
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
