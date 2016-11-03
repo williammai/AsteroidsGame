@@ -107,7 +107,7 @@ class Star
 
 class Asteroid extends Floater 
 {
-  private int rotSpeed;
+  //private int rotSpeed;
   public Asteroid(){
   corners = 5;
      int[] xS = {-16,0,24,24,-8};
