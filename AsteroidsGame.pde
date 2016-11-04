@@ -62,6 +62,7 @@ public void keyPressed(){
   boob.setY((int)(Math.random()*600));
   boob.setDirectionX(0);
   boob.setDirectionY(0);
+  boob.setPointDirection((int)(boob.getPointDirection()*Math.random()*7)-3);
 }
 }
 class SpaceShip extends Floater  
