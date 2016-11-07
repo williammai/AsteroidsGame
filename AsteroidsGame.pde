@@ -4,7 +4,11 @@ int r;
 int g;
 int b;
 int o;
-Asteroid[] huge = new Asteroid[18];
+//Asteroid[] huge = new Asteroid[18];
+
+ArrayList <Asteroid> huge = new ArrayList <Asteroid>();
+ 
+
 public void setup() 
 
 {
@@ -14,14 +18,14 @@ public void setup()
    for(int i = 0; i<tiger.length;i++){
     tiger[i] = new Star((int)(Math.random()*700),(int)(Math.random()*700));
    }
-   for(int i = 0; i<huge.length; i++){
-    huge[i] = new Asteroid();
-    huge[i].setX((int)(Math.random()*800));
-    huge[i].setY((int)(Math.random()*800));
-    huge[i].setDirectionX((Math.random()*8)-4);
-    huge[i].setDirectionY((Math.random()*8)-4);
-
-   }
+for (int i=0; i>10; i++){
+ huge.add(new Asteroid());
+ huge.get(i).setX((int)(Math.random()*800));
+ huge.get(i).setY((int)(Math.random()*800));
+ huge.get(i).setDirectionX((int)(Math.random()*20)-10);
+huge.get(i).setDirectionY((int)(Math.random()*20)-10);
+}
+   
 }
 public void draw() 
 {
@@ -31,11 +35,8 @@ public void draw()
   for (int i = 0; i<tiger.length;i++){
     tiger[i].show1();
   }
-  for (int i = 0; i<huge.length;i++){
+  for (int i = 0; i<10;i++){
 
-    huge[i].move();
-    huge[i].show();
-    huge[i].rotate(1);
   }
   r = r+1;
   g = g+1;
