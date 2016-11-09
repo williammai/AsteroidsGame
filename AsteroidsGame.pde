@@ -18,12 +18,12 @@ public void setup()
    for(int i = 0; i<tiger.length;i++){
     tiger[i] = new Star((int)(Math.random()*700),(int)(Math.random()*700));
    }
-for (int i=0; i>10; i++){
+for (int i=0; i<10; i++){
  huge.add(new Asteroid());
  huge.get(i).setX((int)(Math.random()*800));
  huge.get(i).setY((int)(Math.random()*800));
  huge.get(i).setDirectionX((int)(Math.random()*20)-10);
-huge.get(i).setDirectionY((int)(Math.random()*20)-10);
+ huge.get(i).setDirectionY((int)(Math.random()*20)-10);
 }
    
 }
@@ -32,10 +32,12 @@ public void draw()
   background(0);
   boob.move();
   boob.show();
-  for (int i = 0; i<tiger.length;i++){
+  for (int i = 0; i<100;i++){
     tiger[i].show1();
   }
-  for (int i = 0; i<10;i++){
+  for (int i = 0; i<huge.size();i++){
+    huge.get(i).move();
+    huge.get(i).show();
 
   }
   r = r+1;
@@ -130,6 +132,11 @@ class Asteroid extends Floater
       public double getDirectionY() {return myDirectionY;}
       public void setPointDirection(int degrees) {myPointDirection = degrees;}
       public double getPointDirection() {return myPointDirection;}
+
+    void move(){
+      rotate(10);
+      super.move();
+    }
   
 }
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
