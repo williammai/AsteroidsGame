@@ -38,6 +38,9 @@ public void draw()
   for (int i = 0; i<huge.size();i++){
     huge.get(i).move();
     huge.get(i).show();
+    if(dist(boob.getX(), boob.getY(),huge.get(i).getX(),huge.get(i).getY())<50){
+      huge.remove(i);
+    }
 
   }
   r = r+1;
