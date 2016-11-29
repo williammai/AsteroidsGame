@@ -7,6 +7,7 @@ int o;
 //Asteroid[] huge = new Asteroid[18];
 
 ArrayList <Asteroid> huge = new ArrayList <Asteroid>();
+ArrayList <Bullet> bomb = new ArrayList <Bullet>();
  
 
 public void setup() 
@@ -30,8 +31,8 @@ for (int i=0; i<10; i++){
 public void draw() 
 {
   background(0);
-  boob.move();
   boob.show();
+  boob.move();
   for (int i = 0; i<100;i++){
     tiger[i].show1();
   }
@@ -43,6 +44,11 @@ public void draw()
     }
 
   }
+  for(int i = 0; i<bomb.size(); i++){
+    bomb.get(i).show();
+    bomb.get(i).move();
+  }
+
   r = r+1;
   g = g+1;
   b = b+1;
@@ -69,6 +75,10 @@ public void keyPressed(){
   boob.setDirectionX(0);
   boob.setDirectionY(0);
   boob.setPointDirection((int)(boob.getPointDirection()*Math.random()*7)-3);
+}
+if(keyCode == 32)
+{
+  bomb.add(new Bullet(boob));                         
 }
 }
 class SpaceShip extends Floater  
@@ -114,7 +124,7 @@ class Star
 
 class Asteroid extends Floater 
 {
-  //private int rotSpeed;
+  private int rosalina = (int)((Math.random()*7)-3);
   public Asteroid(){
   corners = 5;
      int[] xS = {-16,0,24,24,-8};
@@ -137,11 +147,12 @@ class Asteroid extends Floater
       public double getPointDirection() {return myPointDirection;}
 
     void move(){
-      rotate(10);
+      rotate(rosalina);
       super.move();
     }
-  
 }
+
+  
 abstract class Floater //Do NOT modify the Floater class! Make changes in the SpaceShip class 
 {   
   protected int corners;  //the number of corners, a triangular floater has 3   
@@ -176,7 +187,7 @@ abstract class Floater //Do NOT modify the Floater class! Make changes in the Sp
     //rotates the floater by a given number of degrees    
     myPointDirection+=nDegreesOfRotation;   
   }   
-  public void move ()   //move the floater in the current direction of travel
+  public void move()   //move the floater in the current direction of travel
   {      
     //change the x and y coordinates by myDirectionX and myDirectionY       
     myCenterX += myDirectionX;    
