@@ -5,6 +5,7 @@ int g;
 int b;
 int o;
 //Asteroid[] huge = new Asteroid[18];
+boolean alive = true;
 
 ArrayList <Asteroid> huge = new ArrayList <Asteroid>();
 ArrayList <Bullet> bomb = new ArrayList <Bullet>();
@@ -30,29 +31,51 @@ for (int i=0; i<10; i++){
 }
 public void draw() 
 {
+  if(alive == true){
+
+  
   background(0);
   boob.show();
   boob.move();
-  for (int i = 0; i<100;i++){
-    tiger[i].show1();
-  }
   for (int i = 0; i<huge.size();i++){
     huge.get(i).move();
     huge.get(i).show();
+  }
+  for (int i = 0; i<100;i++){
+    tiger[i].show1();
+  }
+
+for (int i = 0; i<huge.size();i++){
+ 
     if(dist(boob.getX(), boob.getY(),huge.get(i).getX(),huge.get(i).getY())<50){
-      huge.remove(i);
+      alive = false;
     }
 
+  for(int j=0;j<bomb.size();j++){
+
+  
+    if(dist(bomb.get(j).getX(), bomb.get(j).getY(),huge.get(i).getX(),huge.get(i).getY())<50){
+      huge.remove(i); 
+      bomb.remove(j);
+      break;
+    }
+  }
   }
   for(int i = 0; i<bomb.size(); i++){
     bomb.get(i).show();
     bomb.get(i).move();
   }
 
-  r = r+1;
+  r = r  +1;
   g = g+1;
   b = b+1;
   o = o+1;
+}
+
+if(alive == false){
+  background(0);
+  text("LOSER",300,300,150,150);
+}
 
 }
 public void keyPressed(){

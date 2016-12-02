@@ -6,7 +6,7 @@
       myCenterX = theShip.getX();
       myCenterY = theShip.getY();
       myDirectionX=5*Math.cos(dRadians) + myDirectionX;
-      myDirectionY=5*Math.cos(dRadians) + myDirectionY;
+      myDirectionY=5*Math.sin(dRadians) + myDirectionY;
 
     }
 
